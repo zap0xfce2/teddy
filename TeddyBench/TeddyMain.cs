@@ -592,18 +592,7 @@ namespace TeddyBench
 
         private uint GetAudioID()
         {
-            if(MessageBox.Show("Do you want to set a specific Audio-ID? If you don't know, just say 'No'.", "Set specific Audio ID", MessageBoxButtons.YesNo) == DialogResult.No)
-            {
-                return uint.MaxValue;
-            }
-
-            AskHexForm form = new AskHexForm();
-            if(form.ShowDialog() != DialogResult.OK)
-            {
-                return uint.MaxValue;
-            }
-
-            return form.Value;
+            return uint.MaxValue;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
