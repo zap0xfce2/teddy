@@ -57,7 +57,7 @@ namespace TeddyBench
         private SafeThread AsyncTagActionThread = null;
         private System.Windows.Forms.Timer StatusBarTimer = null;
 
-        private string TitleString => "TeddyBench - " + GetVersion();
+        private string TitleString => "TeddyBench Lite - " + GetVersion();
 
         private SafeThread PlayThread = null;
         private bool PlayThreadStop = true;
@@ -1145,14 +1145,10 @@ namespace TeddyBench
 
                     if (fileName.ToLower().EndsWith(".mp3") || fileName.ToLower().EndsWith(".ogg"))
                     {
-                        switch (MessageBox.Show("You are about to encode a single MP3/Ogg, is this right?", "Encode a file", MessageBoxButtons.YesNo))
-                        {
-                            case DialogResult.No:
-                                return;
-                            case DialogResult.Yes:
-                                EncodeFile(ask.Uid, new[] { fileName }, id);
-                                return;
-                        }
+
+                        EncodeFile(ask.Uid, new[] { fileName }, id);
+                        return;
+                        
                     }
                     else
                     {
