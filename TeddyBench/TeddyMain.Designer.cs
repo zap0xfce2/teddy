@@ -367,7 +367,7 @@
             // lblPlayTime
             // 
             this.lblPlayTime.AutoSize = true;
-            this.lblPlayTime.Location = new System.Drawing.Point(591, 6);
+            this.lblPlayTime.Location = new System.Drawing.Point(695, 6);
             this.lblPlayTime.Name = "lblPlayTime";
             this.lblPlayTime.Size = new System.Drawing.Size(48, 13);
             this.lblPlayTime.TabIndex = 4;
@@ -375,7 +375,7 @@
             // 
             // trackPlayPosition
             // 
-            this.trackPlayPosition.Location = new System.Drawing.Point(231, 0);
+            this.trackPlayPosition.Location = new System.Drawing.Point(328, 0);
             this.trackPlayPosition.Name = "trackPlayPosition";
             this.trackPlayPosition.Size = new System.Drawing.Size(356, 45);
             this.trackPlayPosition.TabIndex = 3;
@@ -386,7 +386,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 6);
+            this.label1.Location = new System.Drawing.Point(101, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 1;
@@ -394,7 +394,7 @@
             // 
             // btnPlay
             // 
-            this.btnPlay.Location = new System.Drawing.Point(169, 2);
+            this.btnPlay.Location = new System.Drawing.Point(263, 2);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(57, 21);
             this.btnPlay.TabIndex = 2;
@@ -411,7 +411,7 @@
             "Product Number",
             "Date",
             "Type"});
-            this.cmbSorting.Location = new System.Drawing.Point(53, 3);
+            this.cmbSorting.Location = new System.Drawing.Point(147, 3);
             this.cmbSorting.Name = "cmbSorting";
             this.cmbSorting.Size = new System.Drawing.Size(110, 21);
             this.cmbSorting.TabIndex = 0;
@@ -421,7 +421,7 @@
             // 
             this.btnAdd.Image = global::TeddyBench.Properties.Resources.plus;
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(671, 2);
+            this.btnAdd.Location = new System.Drawing.Point(6, 3);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(87, 25);
             this.btnAdd.TabIndex = 0;
