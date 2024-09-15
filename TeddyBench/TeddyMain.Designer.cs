@@ -67,12 +67,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnPlay = new System.Windows.Forms.Button();
             this.cmbSorting = new System.Windows.Forms.ComboBox();
-            this.btnReplace = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.lstTonies = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -87,6 +84,9 @@
             this.exportTooggToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sendDiagnosticsReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnReplace = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.grpCardContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -316,7 +316,6 @@
             this.grpCardContent.Size = new System.Drawing.Size(800, 426);
             this.grpCardContent.TabIndex = 1;
             this.grpCardContent.TabStop = false;
-            this.grpCardContent.Text = "Card Content";
             this.grpCardContent.Visible = false;
             // 
             // splitContainer1
@@ -330,6 +329,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Panel2Collapsed = true;
             this.splitContainer1.Size = new System.Drawing.Size(788, 401);
             this.splitContainer1.SplitterDistance = 711;
             this.splitContainer1.SplitterWidth = 1;
@@ -349,6 +349,7 @@
             this.splitContainer2.Panel1.Controls.Add(this.lblPlayTime);
             this.splitContainer2.Panel1.Controls.Add(this.trackPlayPosition);
             this.splitContainer2.Panel1.Controls.Add(this.label1);
+            this.splitContainer2.Panel1.Controls.Add(this.btnAdd);
             this.splitContainer2.Panel1.Controls.Add(this.btnPlay);
             this.splitContainer2.Panel1.Controls.Add(this.cmbSorting);
             // 
@@ -357,9 +358,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.btnSave);
             this.splitContainer2.Panel2.Controls.Add(this.btnReplace);
             this.splitContainer2.Panel2.Controls.Add(this.btnDelete);
-            this.splitContainer2.Panel2.Controls.Add(this.btnAdd);
             this.splitContainer2.Panel2.Controls.Add(this.lstTonies);
-            this.splitContainer2.Size = new System.Drawing.Size(711, 401);
+            this.splitContainer2.Size = new System.Drawing.Size(788, 401);
             this.splitContainer2.SplitterDistance = 36;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 1;
@@ -417,16 +417,17 @@
             this.cmbSorting.TabIndex = 0;
             this.cmbSorting.SelectedIndexChanged += new System.EventHandler(this.cmbSorting_SelectedIndexChanged);
             // 
-            // btnReplace
+            // btnAdd
             // 
-            this.btnReplace.Image = global::TeddyBench.Properties.Resources.exchange;
-            this.btnReplace.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReplace.Location = new System.Drawing.Point(96, 3);
-            this.btnReplace.Name = "btnReplace";
-            this.btnReplace.Size = new System.Drawing.Size(103, 25);
-            this.btnReplace.TabIndex = 2;
-            this.btnReplace.Text = "Replace...";
-            this.btnReplace.UseVisualStyleBackColor = true;
+            this.btnAdd.Image = global::TeddyBench.Properties.Resources.plus;
+            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdd.Location = new System.Drawing.Point(671, 2);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(87, 25);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "Add...";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lstTonies
             // 
@@ -452,7 +453,7 @@
             this.lstTonies.Location = new System.Drawing.Point(0, 0);
             this.lstTonies.Name = "lstTonies";
             this.lstTonies.ShowItemToolTips = true;
-            this.lstTonies.Size = new System.Drawing.Size(711, 364);
+            this.lstTonies.Size = new System.Drawing.Size(788, 364);
             this.lstTonies.TabIndex = 0;
             this.lstTonies.TileSize = new System.Drawing.Size(64, 64);
             this.lstTonies.UseCompatibleStateImageBehavior = false;
@@ -465,42 +466,6 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Product Name";
-            // 
-            // btnSave
-            // 
-            this.btnSave.Image = global::TeddyBench.Properties.Resources.arrow;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(298, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(118, 25);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save as .ogg...";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Image = global::TeddyBench.Properties.Resources.plus;
-            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(3, 3);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(87, 25);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "Add...";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Image = global::TeddyBench.Properties.Resources.minus_button;
-            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(205, 3);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(87, 25);
-            this.btnDelete.TabIndex = 0;
-            this.btnDelete.Text = "Delete...";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // lblMessage
             // 
@@ -618,6 +583,44 @@
             this.sendDiagnosticsReportToolStripMenuItem.Text = "Send diagnostics report";
             this.sendDiagnosticsReportToolStripMenuItem.Click += new System.EventHandler(this.sendDiagnosticsReportToolStripMenuItem_Click);
             // 
+            // btnReplace
+            // 
+            this.btnReplace.Image = global::TeddyBench.Properties.Resources.exchange;
+            this.btnReplace.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReplace.Location = new System.Drawing.Point(671, 0);
+            this.btnReplace.Name = "btnReplace";
+            this.btnReplace.Size = new System.Drawing.Size(103, 25);
+            this.btnReplace.TabIndex = 2;
+            this.btnReplace.Text = "Replace...";
+            this.btnReplace.UseVisualStyleBackColor = true;
+            this.btnReplace.Visible = false;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Image = global::TeddyBench.Properties.Resources.minus_button;
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelete.Location = new System.Drawing.Point(671, 31);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(87, 25);
+            this.btnDelete.TabIndex = 0;
+            this.btnDelete.Text = "Delete...";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Visible = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Image = global::TeddyBench.Properties.Resources.arrow;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(671, 62);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(118, 25);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "Save as .ogg...";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Visible = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // TeddyMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -659,7 +662,6 @@
         private System.Windows.Forms.ToolStripMenuItem openDirectoryToolStripMenuItem;
         private System.Windows.Forms.GroupBox grpCardContent;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ListView lstTonies;
@@ -670,7 +672,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbSorting;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel statusLabel;
         private System.Windows.Forms.Label lblMessage;
@@ -706,7 +707,9 @@
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem downloadToniesjsonOnStartupToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem downloadToniesjsonNowToolStripMenuItem;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnReplace;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 
