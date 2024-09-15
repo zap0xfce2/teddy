@@ -126,14 +126,14 @@
             // openDirectoryToolStripMenuItem
             // 
             this.openDirectoryToolStripMenuItem.Name = "openDirectoryToolStripMenuItem";
-            this.openDirectoryToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.openDirectoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openDirectoryToolStripMenuItem.Text = "&Open Directory";
             this.openDirectoryToolStripMenuItem.Click += new System.EventHandler(this.openDirectoryToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -471,7 +471,7 @@
             // 
             this.lblMessage.AutoSize = true;
             this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.Location = new System.Drawing.Point(168, 170);
+            this.lblMessage.Location = new System.Drawing.Point(174, 170);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(394, 17);
             this.lblMessage.TabIndex = 2;
@@ -527,6 +527,7 @@
             this.toggleLiveFlagToolStripMenuItem.Name = "toggleLiveFlagToolStripMenuItem";
             this.toggleLiveFlagToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.toggleLiveFlagToolStripMenuItem.Text = "Toggle live flag";
+            this.toggleLiveFlagToolStripMenuItem.Visible = false;
             this.toggleLiveFlagToolStripMenuItem.Click += new System.EventHandler(this.toggleLiveFlagToolStripMenuItem_Click);
             // 
             // renameToolStripMenuItem
@@ -548,6 +549,7 @@
             this.assignNewUIDToolStripMenuItem.Name = "assignNewUIDToolStripMenuItem";
             this.assignNewUIDToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.assignNewUIDToolStripMenuItem.Text = "Assign new UID";
+            this.assignNewUIDToolStripMenuItem.Visible = false;
             this.assignNewUIDToolStripMenuItem.Click += new System.EventHandler(this.assignNewUIDToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
@@ -567,6 +569,7 @@
             this.exportTooggToolStripMenuItem.Name = "exportTooggToolStripMenuItem";
             this.exportTooggToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.exportTooggToolStripMenuItem.Text = "Export to .ogg";
+            this.exportTooggToolStripMenuItem.Visible = false;
             this.exportTooggToolStripMenuItem.Click += new System.EventHandler(this.exportTooggToolStripMenuItem_Click);
             // 
             // exportToToolStripMenuItem
@@ -574,6 +577,7 @@
             this.exportToToolStripMenuItem.Name = "exportToToolStripMenuItem";
             this.exportToToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.exportToToolStripMenuItem.Text = "Export to...";
+            this.exportToToolStripMenuItem.Visible = false;
             this.exportToToolStripMenuItem.Click += new System.EventHandler(this.exportToToolStripMenuItem_Click);
             // 
             // sendDiagnosticsReportToolStripMenuItem
@@ -581,6 +585,7 @@
             this.sendDiagnosticsReportToolStripMenuItem.Name = "sendDiagnosticsReportToolStripMenuItem";
             this.sendDiagnosticsReportToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.sendDiagnosticsReportToolStripMenuItem.Text = "Send diagnostics report";
+            this.sendDiagnosticsReportToolStripMenuItem.Visible = false;
             this.sendDiagnosticsReportToolStripMenuItem.Click += new System.EventHandler(this.sendDiagnosticsReportToolStripMenuItem_Click);
             // 
             // btnReplace
