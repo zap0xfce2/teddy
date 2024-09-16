@@ -1,6 +1,7 @@
 ﻿using NAudio.Wave;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using ScottPlot.Drawing.Colormaps;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -2465,11 +2466,28 @@ namespace TeddyBench
 
         private void replaceContentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //DeleteSelected();
-            if (LastSelectediItem != null/* && LastSelectediItem.ImageKey == "custom"*/)
+            // Hier muss das Renaming rein :)
+            // ich brauche den Namen des Tonies
+            // wo steht der?
+            // dann delete & add
+            // aber erst wenn alle infos da sind für den fall das der user den vorgang mittendrin abbricht
+            // 
+
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Multiselect = true;
+
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
-                LastSelectediItem.BeginEdit();
+                AddFiles(dlg.FileNames, GetAudioID());
             }
+
+
+            //DeleteSelected();
+            //if (LastSelectediItem != null/* && LastSelectediItem.ImageKey == "custom"*/)
+            //{
+            //    LastSelectediItem.BeginEdit();
+            //}
+
         }
 
         private void lblMessage_Click(object sender, EventArgs e)
