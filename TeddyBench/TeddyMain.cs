@@ -2462,5 +2462,24 @@ namespace TeddyBench
                 LoadJson(true);
             }, "JSON Downloader").Start();
         }
+
+        private void replaceContentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //DeleteSelected();
+            if (LastSelectediItem != null/* && LastSelectediItem.ImageKey == "custom"*/)
+            {
+                LastSelectediItem.BeginEdit();
+            }
+        }
+
+        private void lblMessage_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dlg = new FolderBrowserDialog();
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                OpenPath(dlg.SelectedPath);
+            }
+        }
     }
 }

@@ -65,9 +65,12 @@
             this.lblPlayTime = new System.Windows.Forms.Label();
             this.trackPlayPosition = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.btnPlay = new System.Windows.Forms.Button();
             this.cmbSorting = new System.Windows.Forms.ComboBox();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnReplace = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.lstTonies = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblMessage = new System.Windows.Forms.Label();
@@ -79,14 +82,11 @@
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.assignNewUIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.showInExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportTooggToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sendDiagnosticsReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnReplace = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.replaceContentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.grpCardContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -392,6 +392,18 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Sort by";
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Image = global::TeddyBench.Properties.Resources.plus;
+            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdd.Location = new System.Drawing.Point(6, 3);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(87, 25);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "Add...";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // btnPlay
             // 
             this.btnPlay.Location = new System.Drawing.Point(263, 2);
@@ -417,17 +429,43 @@
             this.cmbSorting.TabIndex = 0;
             this.cmbSorting.SelectedIndexChanged += new System.EventHandler(this.cmbSorting_SelectedIndexChanged);
             // 
-            // btnAdd
+            // btnSave
             // 
-            this.btnAdd.Image = global::TeddyBench.Properties.Resources.plus;
-            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(6, 3);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(87, 25);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "Add...";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnSave.Image = global::TeddyBench.Properties.Resources.arrow;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(671, 62);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(118, 25);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "Save as .ogg...";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Visible = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnReplace
+            // 
+            this.btnReplace.Image = global::TeddyBench.Properties.Resources.exchange;
+            this.btnReplace.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReplace.Location = new System.Drawing.Point(671, 0);
+            this.btnReplace.Name = "btnReplace";
+            this.btnReplace.Size = new System.Drawing.Size(103, 25);
+            this.btnReplace.TabIndex = 2;
+            this.btnReplace.Text = "Replace...";
+            this.btnReplace.UseVisualStyleBackColor = true;
+            this.btnReplace.Visible = false;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Image = global::TeddyBench.Properties.Resources.minus_button;
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelete.Location = new System.Drawing.Point(671, 31);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(87, 25);
+            this.btnDelete.TabIndex = 0;
+            this.btnDelete.Text = "Delete...";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Visible = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // lstTonies
             // 
@@ -470,12 +508,14 @@
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
+            this.lblMessage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMessage.Location = new System.Drawing.Point(174, 170);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(394, 17);
             this.lblMessage.TabIndex = 2;
             this.lblMessage.Text = "Please insert your box\' SD card or go to File->Open Directory";
+            this.lblMessage.Click += new System.EventHandler(this.lblMessage_Click);
             // 
             // statusStrip1
             // 
@@ -511,16 +551,16 @@
             // 
             this.TonieContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toggleLiveFlagToolStripMenuItem,
+            this.replaceContentsToolStripMenuItem,
             this.renameToolStripMenuItem,
             this.deleteToolStripMenuItem,
             this.assignNewUIDToolStripMenuItem,
-            this.toolStripMenuItem2,
             this.showInExplorerToolStripMenuItem,
             this.exportTooggToolStripMenuItem,
             this.exportToToolStripMenuItem,
             this.sendDiagnosticsReportToolStripMenuItem});
             this.TonieContextMenu.Name = "contextMenuStrip1";
-            this.TonieContextMenu.Size = new System.Drawing.Size(199, 186);
+            this.TonieContextMenu.Size = new System.Drawing.Size(199, 202);
             // 
             // toggleLiveFlagToolStripMenuItem
             // 
@@ -551,11 +591,6 @@
             this.assignNewUIDToolStripMenuItem.Text = "Assign new UID";
             this.assignNewUIDToolStripMenuItem.Visible = false;
             this.assignNewUIDToolStripMenuItem.Click += new System.EventHandler(this.assignNewUIDToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(195, 6);
             // 
             // showInExplorerToolStripMenuItem
             // 
@@ -588,43 +623,12 @@
             this.sendDiagnosticsReportToolStripMenuItem.Visible = false;
             this.sendDiagnosticsReportToolStripMenuItem.Click += new System.EventHandler(this.sendDiagnosticsReportToolStripMenuItem_Click);
             // 
-            // btnReplace
+            // replaceContentsToolStripMenuItem
             // 
-            this.btnReplace.Image = global::TeddyBench.Properties.Resources.exchange;
-            this.btnReplace.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReplace.Location = new System.Drawing.Point(671, 0);
-            this.btnReplace.Name = "btnReplace";
-            this.btnReplace.Size = new System.Drawing.Size(103, 25);
-            this.btnReplace.TabIndex = 2;
-            this.btnReplace.Text = "Replace...";
-            this.btnReplace.UseVisualStyleBackColor = true;
-            this.btnReplace.Visible = false;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Image = global::TeddyBench.Properties.Resources.minus_button;
-            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(671, 31);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(87, 25);
-            this.btnDelete.TabIndex = 0;
-            this.btnDelete.Text = "Delete...";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Visible = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Image = global::TeddyBench.Properties.Resources.arrow;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(671, 62);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(118, 25);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save as .ogg...";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Visible = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.replaceContentsToolStripMenuItem.Name = "replaceContentsToolStripMenuItem";
+            this.replaceContentsToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.replaceContentsToolStripMenuItem.Text = "Replace Contents";
+            this.replaceContentsToolStripMenuItem.Click += new System.EventHandler(this.replaceContentsToolStripMenuItem_Click);
             // 
             // TeddyMain
             // 
@@ -692,7 +696,6 @@
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem assignNewUIDToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem showInExplorerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportTooggToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sendDiagnosticsReportToolStripMenuItem;
@@ -715,6 +718,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnReplace;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.ToolStripMenuItem replaceContentsToolStripMenuItem;
     }
 }
 
