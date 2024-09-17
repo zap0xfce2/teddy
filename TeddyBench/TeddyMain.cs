@@ -2479,19 +2479,13 @@ namespace TeddyBench
         private void replaceContentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Hier muss das Renaming rein :)
-            // ich brauche den Namen des Tonies
-            // wo steht der?
-            // dann delete & add
-            // aber erst wenn alle infos da sind für den fall das der user den vorgang mittendrin abbricht
-            // 
-
-
+            // wo wird der gespeichert?
 
             string tooltipText = LastSelectediItem.ToolTipText;
 
             // Muster für den Namen und die UID definieren
-            string namePattern = @"Name:\s*(.+?)\s*UID:";   // Sucht nach "Name:", gefolgt von beliebigem Text bis zum Minus und eckigen Klammern
-            string uidPattern = @"UID:\s*([A-F0-9]+)";  // Sucht nach "UID:", gefolgt von einer Hexadezimalzeichenfolge
+            string namePattern = @"Name:\s*(.+?)\s*UID:";   
+            string uidPattern = @"UID:\s*([A-F0-9]+)";
 
             // Namen mit RegEx extrahieren
             Match nameMatch = Regex.Match(tooltipText, namePattern);
@@ -2526,14 +2520,6 @@ namespace TeddyBench
             {
                 AddFiles(dlg.FileNames, GetAudioID(), tonyuid, tonyname);
             }
-
-
-            //DeleteSelected();
-            //if (LastSelectediItem != null/* && LastSelectediItem.ImageKey == "custom"*/)
-            //{
-            //    LastSelectediItem.BeginEdit();
-            //}
-
         }
 
         private void lblMessage_Click(object sender, EventArgs e)
