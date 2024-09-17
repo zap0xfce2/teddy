@@ -51,11 +51,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(74, 79);
+            this.label1.Location = new System.Drawing.Point(56, 79);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 20);
+            this.label1.Size = new System.Drawing.Size(128, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "TeddyBench";
+            this.label1.Text = "TeddyBench Lite";
             // 
             // lblVersion
             // 
@@ -69,11 +69,12 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(78, 117);
+            this.label2.Location = new System.Drawing.Point(73, 117);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 13);
+            this.label2.Size = new System.Drawing.Size(100, 26);
             this.label2.TabIndex = 1;
-            this.label2.Text = "by Team RevvoX";
+            this.label2.Text = "by Team RevvoX\r\nm0ds by Zap0xfce2";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // linkLabel1
             // 
@@ -91,7 +92,7 @@
             // 
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel2.Location = new System.Drawing.Point(60, 141);
+            this.linkLabel2.Location = new System.Drawing.Point(60, 160);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(127, 13);
             this.linkLabel2.TabIndex = 2;
