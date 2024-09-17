@@ -1134,60 +1134,72 @@ namespace TeddyBench
             }
         }
 
-        private void AddFiles(string[] fileNames, uint id = uint.MaxValue)
+        private void AddFiles(string[] fileNames, uint id = uint.MaxValue, string tonyuid = "", string tonyname = "")
         {
             AskUIDForm ask = new AskUIDForm(RfidReader);
 
-            if (ask.ShowDialog() == DialogResult.OK)
+            // Debug-Ausgabe der tonyuid und tonyname
+            MessageBox.Show($"TonyUID: {tonyuid}");
+            MessageBox.Show($"TonyName: {tonyname}");
+
+            // Prüfen, ob tonyuid übergeben wurde, ansonsten AskUIDForm anzeigen
+            string finalUid = !string.IsNullOrEmpty(tonyuid) ? tonyuid : ask.Uid;
+            string finalName = !string.IsNullOrEmpty(tonyname) ? tonyname : "newtony"; //ask.TonyName; // Beispiel: falls ask.TonyName vorhanden ist
+
+            // UID bestätigen, falls nicht vorhanden
+            if (string.IsNullOrEmpty(tonyuid) && ask.ShowDialog() != DialogResult.OK)
             {
-                if (fileNames.Count() == 1)
+                return; // Abbrechen, wenn UID nicht eingegeben wurde
+            }
+
+            if (fileNames.Count() == 1)
+            {
+                string fileName = fileNames[0];
+
+                if (fileName.ToLower().EndsWith(".mp3") || fileName.ToLower().EndsWith(".ogg"))
                 {
-                    string fileName = fileNames[0];
-
-                    if (fileName.ToLower().EndsWith(".mp3") || fileName.ToLower().EndsWith(".ogg"))
-                    {
-
-                        EncodeFile(ask.Uid, new[] { fileName }, id);
-                        return;
-                        
-                    }
-                    else
-                    {
-                        try
-                        {
-                            TonieAudio dumpFile = TonieAudio.FromFile(fileName);
-
-                            if (dumpFile.FileContent.Length > 0)
-                            {
-                                CopyFile(ask.Uid, fileName);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("The file you have chosen is not supported.", "Add file...");
-                            return;
-                        }
-                    }
+                    // Verwende finalUid (entweder tonyuid oder ask.Uid)
+                    EncodeFile(finalUid, new[] { fileName }, id);
+                    return;
                 }
                 else
                 {
-                    if (fileNames.Where(f => !(f.ToLower().EndsWith(".mp3") || f.ToLower().EndsWith(".ogg"))).Count() > 0)
+                    try
                     {
-                        MessageBox.Show("Please select MP3/Ogg files only.", "Add file...");
+                        TonieAudio dumpFile = TonieAudio.FromFile(fileName);
+
+                        if (dumpFile.FileContent.Length > 0)
+                        {
+                            // Verwende finalUid (entweder tonyuid oder ask.Uid)
+                            CopyFile(finalUid, fileName);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("The file you have chosen is not supported.", "Add file...");
                         return;
                     }
-
-                    TrackSortDialog sorter = new TrackSortDialog(fileNames);
-
-                    if(sorter.ShowDialog() == DialogResult.Cancel)
-                    {
-                        return;
-                    }
-
-                    string[] sorted = sorter.SortedFiles;
-
-                    EncodeFile(ask.Uid, sorted, id);
                 }
+            }
+            else
+            {
+                if (fileNames.Where(f => !(f.ToLower().EndsWith(".mp3") || f.ToLower().EndsWith(".ogg"))).Count() > 0)
+                {
+                    MessageBox.Show("Please select MP3/Ogg files only.", "Add file...");
+                    return;
+                }
+
+                TrackSortDialog sorter = new TrackSortDialog(fileNames);
+
+                if (sorter.ShowDialog() == DialogResult.Cancel)
+                {
+                    return;
+                }
+
+                string[] sorted = sorter.SortedFiles;
+
+                // Verwende finalUid (entweder tonyuid oder ask.Uid)
+                EncodeFile(finalUid, sorted, id);
             }
         }
 
@@ -2473,12 +2485,46 @@ namespace TeddyBench
             // aber erst wenn alle infos da sind für den fall das der user den vorgang mittendrin abbricht
             // 
 
+
+
+            string tooltipText = LastSelectediItem.ToolTipText;
+
+            // Muster für den Namen und die UID definieren
+            string namePattern = @"Name:\s*(.+?)\s*UID:";   // Sucht nach "Name:", gefolgt von beliebigem Text bis zum Minus und eckigen Klammern
+            string uidPattern = @"UID:\s*([A-F0-9]+)";  // Sucht nach "UID:", gefolgt von einer Hexadezimalzeichenfolge
+
+            // Namen mit RegEx extrahieren
+            Match nameMatch = Regex.Match(tooltipText, namePattern);
+            string tonyname = "";
+            if (nameMatch.Success)
+            {
+                tonyname = nameMatch.Groups[1].Value.Trim(); // Extrahiere den Namen und trimme Leerzeichen
+                MessageBox.Show($"Extrahierter Name: {tonyname}");
+            }
+            else
+            {
+                MessageBox.Show("Name konnte nicht gefunden werden.");
+            }
+
+            // UID mit RegEx extrahieren
+            Match uidMatch = Regex.Match(tooltipText, uidPattern);
+            string tonyuid = "";
+            if (uidMatch.Success)
+            {
+                tonyuid = uidMatch.Groups[1].Value; // Extrahiere die UID
+                MessageBox.Show($"Extrahierte UID: {tonyuid}");
+            }
+            else
+            {
+                MessageBox.Show("UID konnte nicht gefunden werden.");
+            };
+
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Multiselect = true;
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                AddFiles(dlg.FileNames, GetAudioID());
+                AddFiles(dlg.FileNames, GetAudioID(), tonyuid, tonyname);
             }
 
 
