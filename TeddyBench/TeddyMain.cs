@@ -1138,19 +1138,22 @@ namespace TeddyBench
         {
             AskUIDForm ask = new AskUIDForm(RfidReader);
 
-            // Debug-Ausgabe der tonyuid und tonyname
-            MessageBox.Show($"TonyUID: {tonyuid}");
-            MessageBox.Show($"TonyName: {tonyname}");
-
-            // Prüfen, ob tonyuid übergeben wurde, ansonsten AskUIDForm anzeigen
-            string finalUid = !string.IsNullOrEmpty(tonyuid) ? tonyuid : ask.Uid;
-            string finalName = !string.IsNullOrEmpty(tonyname) ? tonyname : "newtony"; //ask.TonyName; // Beispiel: falls ask.TonyName vorhanden ist
-
             // UID bestätigen, falls nicht vorhanden
-            if (string.IsNullOrEmpty(tonyuid) && ask.ShowDialog() != DialogResult.OK)
+            if (string.IsNullOrEmpty(tonyuid))
             {
-                return; // Abbrechen, wenn UID nicht eingegeben wurde
+                if (ask.ShowDialog() != DialogResult.OK)
+                {
+                    return; // Abbrechen, wenn der Benutzer den Dialog nicht bestätigt
+                }
             }
+
+            // Prüfen, ob tonyuid übergeben wurde, ansonsten AskUIDForm verwenden
+            string finalUid = !string.IsNullOrEmpty(tonyuid) ? tonyuid : ask.Uid;
+            string finalName = !string.IsNullOrEmpty(tonyname) ? tonyname : "newtony"; //ask.TonyName;
+
+            // Debug-Ausgabe der finalen UID und Name
+            //MessageBox.Show($"FinalUID: {finalUid}");
+            //MessageBox.Show($"FinalName: {finalName}");
 
             if (fileNames.Count() == 1)
             {
@@ -2478,9 +2481,6 @@ namespace TeddyBench
 
         private void replaceContentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Hier muss das Renaming rein :)
-            // wo wird der gespeichert?
-
             string tooltipText = LastSelectediItem.ToolTipText;
 
             // Muster für den Namen und die UID definieren
@@ -2492,12 +2492,7 @@ namespace TeddyBench
             string tonyname = "";
             if (nameMatch.Success)
             {
-                tonyname = nameMatch.Groups[1].Value.Trim(); // Extrahiere den Namen und trimme Leerzeichen
-                MessageBox.Show($"Extrahierter Name: {tonyname}");
-            }
-            else
-            {
-                MessageBox.Show("Name konnte nicht gefunden werden.");
+                tonyname = nameMatch.Groups[1].Value.Trim();;
             }
 
             // UID mit RegEx extrahieren
@@ -2505,13 +2500,8 @@ namespace TeddyBench
             string tonyuid = "";
             if (uidMatch.Success)
             {
-                tonyuid = uidMatch.Groups[1].Value; // Extrahiere die UID
-                MessageBox.Show($"Extrahierte UID: {tonyuid}");
+                tonyuid = uidMatch.Groups[1].Value;
             }
-            else
-            {
-                MessageBox.Show("UID konnte nicht gefunden werden.");
-            };
 
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Multiselect = true;
