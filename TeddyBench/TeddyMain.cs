@@ -973,7 +973,7 @@ namespace TeddyBench
                                         else if (dumpFile.Header.AudioId < 0x50000000)
                                         {
                                             LogWindow.Log(LogWindow.eLogLevel.DebugVerbose, "     unknown custom tonie");
-                                            tonieName = "Unnamed Teddy - " + tonieName;
+                                            tonieName = tag.Uid.Substring(6);
                                             tag.Info.Title = "Unnamed Teddy";
                                             image = "custom";
                                             update = true;
@@ -1134,7 +1134,7 @@ namespace TeddyBench
             }
         }
 
-        private void AddFiles(string[] fileNames, uint id = uint.MaxValue, string tonyuid = "", string tonyname = "")
+        private void AddFiles(string[] fileNames, uint id = uint.MaxValue, string tonyuid = "")
         {
             AskUIDForm ask = new AskUIDForm(RfidReader);
 
@@ -1149,11 +1149,6 @@ namespace TeddyBench
 
             // Prüfen, ob tonyuid übergeben wurde, ansonsten AskUIDForm verwenden
             string finalUid = !string.IsNullOrEmpty(tonyuid) ? tonyuid : ask.Uid;
-            string finalName = !string.IsNullOrEmpty(tonyname) ? tonyname : "newtony"; //ask.TonyName;
-
-            // Debug-Ausgabe der finalen UID und Name
-            //MessageBox.Show($"FinalUID: {finalUid}");
-            //MessageBox.Show($"FinalName: {finalName}");
 
             if (fileNames.Count() == 1)
             {
@@ -2483,17 +2478,8 @@ namespace TeddyBench
         {
             string tooltipText = LastSelectediItem.ToolTipText;
 
-            // Muster für den Namen und die UID definieren
-            string namePattern = @"Name:\s*(.+?)\s*UID:";   
+            // Muster für den Namen und die UID definieren  
             string uidPattern = @"UID:\s*([A-F0-9]+)";
-
-            // Namen mit RegEx extrahieren
-            Match nameMatch = Regex.Match(tooltipText, namePattern);
-            string tonyname = "";
-            if (nameMatch.Success)
-            {
-                tonyname = nameMatch.Groups[1].Value.Trim();;
-            }
 
             // UID mit RegEx extrahieren
             Match uidMatch = Regex.Match(tooltipText, uidPattern);
@@ -2508,7 +2494,7 @@ namespace TeddyBench
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                AddFiles(dlg.FileNames, GetAudioID(), tonyuid, tonyname);
+                AddFiles(dlg.FileNames, GetAudioID(), tonyuid);
             }
         }
 
