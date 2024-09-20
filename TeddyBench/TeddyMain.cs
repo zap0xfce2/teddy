@@ -1298,6 +1298,7 @@ namespace TeddyBench
 
             grpCardContent.Visible = false;
             txtLog.Visible = true;
+            txtLog.Clear();
 
             EncodeThread = new SafeThread(() =>
             {
