@@ -1127,6 +1127,7 @@ namespace TeddyBench
         {
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Multiselect = true;
+            dlg.Filter = "Audio Files|*.mp3;*.ogg";
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
@@ -2492,6 +2493,7 @@ namespace TeddyBench
 
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Multiselect = true;
+            dlg.Filter = "Audio Files|*.mp3;*.ogg";
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
