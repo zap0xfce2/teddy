@@ -71,14 +71,17 @@
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Visible = false;
             // 
             // btnEncode
             // 
             this.btnEncode.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnEncode.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnEncode.Location = new System.Drawing.Point(658, 0);
+            this.btnEncode.Image = global::TeddyBench.Properties.Resources.play_button;
+            this.btnEncode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEncode.Location = new System.Drawing.Point(633, 0);
             this.btnEncode.Name = "btnEncode";
-            this.btnEncode.Size = new System.Drawing.Size(75, 26);
+            this.btnEncode.Size = new System.Drawing.Size(100, 26);
             this.btnEncode.TabIndex = 1;
             this.btnEncode.Text = "Encode";
             this.btnEncode.UseVisualStyleBackColor = true;
